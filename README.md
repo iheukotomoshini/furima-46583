@@ -53,7 +53,7 @@ has_many :purchase_users
 | item                   | references | null: false, foreign_key: true |
 | user                   | references | null: false, foreign_key: true |
 ### Association
-belongs_to :item
+has_one :item
 belongs_to :user
 belongs_to :orders
 
