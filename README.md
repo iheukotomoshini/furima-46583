@@ -22,12 +22,12 @@ has_many :purchase_users
 | ------                 | ----       |-------|
 | title                  | string     | null: false |
 | explanation            | text       | null: false |
-| category_id            | integer    | null :false |
-| status_id              | integer    | null :false |
-| shipping_fee_status_id | integer    | null :false |
-| prefecture_id          | integer    | null :false |
-| scheduled_delivery_id  | integer    | null :false |
-| price                  | integer    | null :false |  
+| category_id            | integer    | null: false | 
+| status_id              | integer    | null: false | 
+| shipping_fee_status_id | integer    | null: false | 
+| prefecture_id          | integer    | null: false | 
+| scheduled_delivery_id  | integer    | null: false | 
+| price                  | integer    | null: false |   
 | user                   | references | null: false, foreign_key: true |
 ### Association
 belongs_to :user
@@ -37,15 +37,15 @@ has_one :purchase_user
 ## orders テーブル
 | Column              | Type       |Options|
 | ------              | ----       |-------|
-| postal-code         | string     | null :false | 
-| prefecture_id       | integer    | null :false | 
-| city                | string     | null :false | 
-| addresses           | string     | null :false | 
+| postal_code         | string     | null: false | 
+| prefecture_id       | integer    | null: false |  
+| city                | string     | null: false | 
+| addresses           | string     | null: false | 
 | building            | string     |             | 
-| phone_number        | string     | null :false | 
+| phone_number        | string     | null: false | 
 | purchase_user       | references | null: false, foreign_key: true |
 ### Association
-has_many :purchase_users
+has_one :purchase_user
 
 ## purchase_usersテーブル
 | Column                 | Type       |Options|
@@ -55,7 +55,7 @@ has_many :purchase_users
 ### Association
 has_one :item
 belongs_to :user
-belongs_to :orders
+has_one :order
 
 
 
