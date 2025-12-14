@@ -4,17 +4,16 @@
 | Column             | Type   |Options|
 | ------             | ----   |-------|
 | nickname           | string | null: false |
-| email              | string | null: false |
+| email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
 | family_name        | string | null: false |
 | last_name          | string | null: false |
 | family_name_kana   | string | null: false |
 | last_name_kana     | string | null: false |
-| birthday           | data   | null: false |
+| birthday           | date   | null: false |
 
 ### Association
 has_many :items
-has_many :orders
 has_many :purchase_users
 
 
@@ -32,8 +31,7 @@ has_many :purchase_users
 | user                   | references | null: false, foreign_key: true |
 ### Association
 belongs_to :user
-belongs_to :order 
-belongs_to :purchase_user
+has_one :purchase_user
 
 
 ## orders テーブル
@@ -45,9 +43,9 @@ belongs_to :purchase_user
 | addresses           | string     | null :false | 
 | building            | string     |             | 
 | phone_number        | string     | null :false | 
+| purchase_user       | references | null: false, foreign_key: true |
 ### Association
-has_many :items
-belongs_to :user
+has_many :purchase_users
 
 ## purchase_usersテーブル
 | Column                 | Type       |Options|
@@ -57,6 +55,7 @@ belongs_to :user
 ### Association
 belongs_to :item
 belongs_to :user
+belongs_to :orders
 
 
 
