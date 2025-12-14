@@ -45,7 +45,7 @@ has_one :purchase_user
 | phone_number        | string     | null: false | 
 | purchase_user       | references | null: false, foreign_key: true |
 ### Association
-has_one :purchase_user
+belongs_to :purchase_user
 
 ## purchase_usersテーブル
 | Column                 | Type       |Options|
@@ -53,7 +53,7 @@ has_one :purchase_user
 | item                   | references | null: false, foreign_key: true |
 | user                   | references | null: false, foreign_key: true |
 ### Association
-has_one :item
+belongs_to :item
 belongs_to :user
 has_one :order
 
