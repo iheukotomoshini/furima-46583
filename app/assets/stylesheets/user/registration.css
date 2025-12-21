@@ -158,3 +158,10 @@
   text-align: right;
   cursor: pointer;
 }
+
+.indispensable {
+  color: white;
+  background-color: red;
+  font-size: 14px;
+  font-weight: bold;
+}
