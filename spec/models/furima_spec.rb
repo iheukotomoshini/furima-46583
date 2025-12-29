@@ -53,7 +53,7 @@ RSpec.describe Furima, type: :model do
         @furima.valid?
         expect(@furima.errors.full_messages).to include("Shipping fee status can't be blank")
       end
-      it "shipping_fee_status_idが空では登録できない" do
+      it "shipping_fee_status_idが1では登録できない" do
         @furima.shipping_fee_status_id = 1
         @furima.valid?
         expect(@furima.errors.full_messages).to include("Shipping fee status can't be blank")
@@ -97,6 +97,11 @@ RSpec.describe Furima, type: :model do
         @furima.price = "100000000"
         @furima.valid?
         expect(@furima.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+      it "userが紐づいていないと登録できない" do
+        @furima.user = nil
+        @furima.valid?
+        expect(@furima.errors.full_messages).to include("User must exist")
       end
     end
   end

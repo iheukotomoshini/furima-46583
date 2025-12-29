@@ -1,7 +1,6 @@
 class FurimasController < ApplicationController
-  before_action :move_to_index, only: [:new, :create, :destroy]
+  before_action :move_to_index, only: [:new, :create]
   def index
-    @furimas = Furima.all
   end
 
   def new
@@ -26,11 +25,6 @@ class FurimasController < ApplicationController
       @scheduled_deliveries = ScheduledDelivery.all
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    @furima.destroy
-    redirect_to root_path
   end
 
   private
