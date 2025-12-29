@@ -15,9 +15,15 @@ class FurimasController < ApplicationController
 
   def create
     @furima = Furima.new(furima_params)
+    @furima.user = current_user
     if @furima.save
       redirect_to root_path
     else
+      @genres = Genre.all
+      @statuses = Status.all
+      @fees = Fee.all
+      @prefectures = Prefecture.all
+      @scheduled_deliveries = ScheduledDelivery.all
       render :new, status: :unprocessable_entity
     end
   end
@@ -31,7 +37,7 @@ class FurimasController < ApplicationController
 
   def move_to_index
     unless user_signed_in?
-      redirect_to root_path
+      redirect_to new_user_session_path
     end
   end
 
