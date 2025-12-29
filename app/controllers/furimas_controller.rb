@@ -5,7 +5,12 @@ class FurimasController < ApplicationController
   end
 
   def new
-    @furimas = Furima.new
+    @furima = Furima.new
+    @genres = Genre.all
+    @statuses = Status.all
+    @fees = Fee.all
+    @prefectures = Prefecture.all
+    @scheduled_deliveries = ScheduledDelivery.all
   end
 
   def create
@@ -28,6 +33,10 @@ class FurimasController < ApplicationController
     unless user_signed_in?
       redirect_to root_path
     end
+  end
+
+  def furima_params
+    params.require(:furima).permit(:image, :title, :explanation, :category_id, :status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, :price)
   end
 
 end
