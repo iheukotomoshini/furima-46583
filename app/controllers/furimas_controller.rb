@@ -1,6 +1,6 @@
 class FurimasController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :move_to_index, only: [:new]
+  
   def index
   end
 
@@ -30,11 +30,7 @@ class FurimasController < ApplicationController
 
   private
 
-  def move_to_index
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
-  end
+
 
   def furima_params
     params.require(:furima).permit(:image, :title, :explanation, :category_id, :status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, :price)
