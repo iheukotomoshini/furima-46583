@@ -1,5 +1,6 @@
 class FurimasController < ApplicationController
-  before_action :move_to_index, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
+  before_action :move_to_index, only: [:new]
   def index
   end
 

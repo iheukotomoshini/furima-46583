@@ -7,3 +7,6 @@ priceInput.addEventListener("input", () => {
   document.getElementById('add-tax-price').textContent = Math.round(tax);
   document.getElementById('profit').textContent = Math.round(profit);
 });
+
+window.addEventListener("turbo:load", priceInput);
+window.addEventListener("turbo:render", priceInput);
