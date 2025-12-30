@@ -17,7 +17,7 @@ has_many :items
 has_many :purchase_users
 
 
-## items テーブル
+## furimas テーブル
 | Column                 | Type       |Options|
 | ------                 | ----       |-------|
 | title                  | string     | null: false |
