@@ -14,6 +14,10 @@ class Furima < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :fee, foreign_key: :shipping_fee_status_id
+  belongs_to_active_hash :genre, foreign_key: :category_id
+  belongs_to_active_hash :status, foreign_key: :status_id
+  belongs_to_active_hash :prefecture, foreign_key: :prefecture_id
+  belongs_to_active_hash :scheduled_delivery, foreign_key: :scheduled_delivery_id
 
 end
 
