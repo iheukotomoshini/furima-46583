@@ -2,6 +2,7 @@ class FurimasController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   
   def index
+    @furimas = Furima.order(updated_at: :desc)
   end
 
   def new
@@ -26,6 +27,10 @@ class FurimasController < ApplicationController
       @scheduled_deliveries = ScheduledDelivery.all
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @furima = Furima.find(params[:id])
   end
 
   private
