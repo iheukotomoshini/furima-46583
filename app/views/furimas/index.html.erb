@@ -128,10 +128,9 @@
     </div>
     <ul class='item-lists'>
   
-    <% puts @furimas.inspect %>
     <% @furimas.each do |furima| %>
     <li class='list'>
-      <%= link_to furima_path(furima.id) do %>
+      <%= link_to "#" do %>
         <%= image_tag furima.image %>
       <% end %>
       <%# if furima.order.present? %>
