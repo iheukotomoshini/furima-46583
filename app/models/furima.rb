@@ -12,6 +12,8 @@ class Furima < ApplicationRecord
 
   has_one_attached :image
 
-end
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :fee, foreign_key: :shipping_fee_status_id
 
+end
 
