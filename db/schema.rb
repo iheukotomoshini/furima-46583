@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_12_29_031155) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_19_074920) do
   create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,12 +39,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_29_031155) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "articles", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "furimas", charset: "utf8mb3", force: :cascade do |t|
+    t.string "title", null: false
     t.text "explanation", null: false
     t.integer "category_id", null: false
     t.integer "status_id", null: false
@@ -55,14 +51,29 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_29_031155) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
     t.index ["user_id"], name: "index_furimas_on_user_id"
   end
 
-  create_table "movie_genres", charset: "utf8mb3", force: :cascade do |t|
-    t.string "name"
+  create_table "orders", charset: "utf8mb3", force: :cascade do |t|
+    t.string "postal_code", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "addresses", null: false
+    t.string "building"
+    t.string "phone_number", null: false
+    t.bigint "purchase_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["purchase_user_id"], name: "index_orders_on_purchase_user_id"
+  end
+
+  create_table "purchase_users", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "furima_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["furima_id"], name: "index_purchase_users_on_furima_id"
+    t.index ["user_id"], name: "index_purchase_users_on_user_id"
   end
 
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
@@ -86,4 +97,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_29_031155) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "furimas", "users"
+  add_foreign_key "orders", "purchase_users"
+  add_foreign_key "purchase_users", "furimas"
+  add_foreign_key "purchase_users", "users"
 end

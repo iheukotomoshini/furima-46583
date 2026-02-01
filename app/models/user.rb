@@ -13,4 +13,5 @@ class User < ApplicationRecord
   validates :birthday, presence: true
 
   has_many :furimas
+  has_many :purchase_users
 end
