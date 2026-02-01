@@ -30,9 +30,7 @@
       <%= link_to "削除", furima_path(@furima.id), data: {turbo_method: :delete}, class:"item-destroy" %>
       <% else%>
       <% unless @furima.purchase_user.present? %>
-      <%# else%>
       <%= link_to "購入画面に進む", furima_orders_path(furima_id: @furima.id), data: {turbo: false }, class:"item-red-btn"%>
-      <%#= link_to "購入画面に進む", purchase_user_orders_path(purchase_user_id: @furima.purchase_user.id), data: {turbo: false }, class:"item-red-btn"%>
       <% end %>
       <% end %>
     <% end %>

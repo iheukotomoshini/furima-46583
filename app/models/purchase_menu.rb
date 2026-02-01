@@ -5,7 +5,6 @@ class PurchaseMenu
   with_options presence: true do
     validates :user_id
     validates :furima_id
-    #validates :price, presence: true
     validates :postal_code, presence: true, format: { with: /\A\d{3}-\d{4}\z/, message: "は半角数字3桁+'-'4桁数字の形式で入力してください" }  
     validates :city, presence: :true
     validates :addresses, presence: :true
@@ -17,8 +16,6 @@ class PurchaseMenu
   def save
     purchase_user = PurchaseUser.create(user_id:, furima_id:)
     Order.create(postal_code:, prefecture_id:, city:, addresses:, building:, phone_number:, purchase_user_id: purchase_user.id)
-    #order = Order.create(user_id:, furima_id:)
-    #PurchaseUser.create(postal_code:, prefecture_id:, city:, address:, building:, phone_number:, order_id: order.id)
   end
 
 end
