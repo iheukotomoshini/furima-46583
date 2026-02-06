@@ -8,9 +8,10 @@ class PurchaseMenu
     validates :postal_code, presence: true, format: { with: /\A\d{3}-\d{4}\z/, message: "は半角数字3桁+'-'4桁数字の形式で入力してください" }  
     validates :city, presence: :true
     validates :addresses, presence: :true
-    validates :building, presence: :true
+    #validates :building
     validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/, message: "は10桁または11桁の半角数字で入力してください" }
   end
+  #validates :building
   validates :prefecture_id, presence: true, numericality: { other_than: 1, message: "can't be blank", only_integer: true}
 
   def save
