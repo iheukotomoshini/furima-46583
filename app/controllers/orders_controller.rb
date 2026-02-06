@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+before_action :authenticate_user!, only: [:index, :create]
   def new
     @purchase_menu = PurchaseMenu.new
   end
@@ -7,12 +7,16 @@ class OrdersController < ApplicationController
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @furima = Furima.find(params[:furima_id])
+    if @furima.purchase_user.present?
+      redirect_to root_path 
+    end
     @purchase_menu = PurchaseMenu.new
     @prefectures = Prefecture.all
   end
 
   def create
     @furima = Furima.find(params[:furima_id])
+
     @purchase_menu = PurchaseMenu.new(menu_params)
     @prefectures = Prefecture.all;
     if @purchase_menu.valid?
@@ -23,6 +27,7 @@ class OrdersController < ApplicationController
     else
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       render :index, status: :unprocessable_entity
+      #redirect_to root_path 
     end
   end
 
