@@ -1,4 +1,4 @@
-class PurchaseUserController < ApplicationController
+class PurchaseUsersController < ApplicationController
   def new
     @purchase_menu = PurchaseMenu.new
   end
