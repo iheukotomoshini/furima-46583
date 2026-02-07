@@ -27,6 +27,9 @@ class FurimasController < ApplicationController
   end
 
   def edit
+    if @furima.purchase_user.present?
+      redirect_to root_path
+    end
   end
 
   def update
