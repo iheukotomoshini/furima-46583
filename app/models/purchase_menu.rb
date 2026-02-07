@@ -5,6 +5,7 @@ class PurchaseMenu
   with_options presence: true do
     validates :user_id
     validates :furima_id
+    validates :token, presence: :true
     validates :postal_code, presence: true, format: { with: /\A\d{3}-\d{4}\z/, message: "は半角数字3桁+'-'4桁数字の形式で入力してください" }  
     validates :city, presence: :true
     validates :addresses, presence: :true

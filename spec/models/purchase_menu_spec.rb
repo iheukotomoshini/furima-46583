@@ -4,9 +4,7 @@ RSpec.describe PurchaseMenu, type: :model do
   before do
     user = FactoryBot.create(:user)
     furima = FactoryBot.create(:furima)
-    purchase_user = FactoryBot.create(:purchase_user, user_id: user.id, furima_id: furima.id)
-    #purchase_user = FactoryBot.create(:purchase_user)
-    order =FactoryBot.create(:order, purchase_user: purchase_user)
+    purchase_user = FactoryBot.create(:purchase_user, user: user, furima: furima)
     @purchase_menu = FactoryBot.build(:purchase_menu, user_id: purchase_user.user_id, furima_id: purchase_user.furima_id)
   end
   describe '購入情報の保存' do
@@ -22,6 +20,11 @@ RSpec.describe PurchaseMenu, type: :model do
     end
 
     context '内容に問題がある場合' do
+        it 'tokenが空だと保存できないこと' do
+        @purchase_menu.token = ''
+        @purchase_menu.valid?
+        expect(@purchase_menu.errors.full_messages).to include("Token can't be blank")
+      end
       it 'postal_codeが空だと保存できないこと' do
         @purchase_menu.postal_code = ''
         @purchase_menu.valid?
@@ -72,8 +75,13 @@ RSpec.describe PurchaseMenu, type: :model do
         @purchase_menu.valid?
         expect(@purchase_menu.errors.full_messages).to include("Phone number は10桁または11桁の半角数字で入力してください")
       end
-      it "10桁以上11桁以内の半角数値のphone_numberでないと登録できない" do
+      it "9桁以下のphone_numberでは登録できない" do
         @purchase_menu.phone_number = "12345"
+        @purchase_menu.valid?
+        expect(@purchase_menu.errors.full_messages).to include("Phone number は10桁または11桁の半角数字で入力してください")
+      end
+      it "12桁以上のphone_numberでは登録できない" do
+        @purchase_menu.phone_number = "123456789101112"
         @purchase_menu.valid?
         expect(@purchase_menu.errors.full_messages).to include("Phone number は10桁または11桁の半角数字で入力してください")
       end
