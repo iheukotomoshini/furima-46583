@@ -1,7 +1,7 @@
 class FurimasController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_common_resources, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_furima, only: [:edit, :update]
+  before_action :set_furima, only: [:edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
 
   def index
@@ -27,6 +27,9 @@ class FurimasController < ApplicationController
   end
 
   def edit
+    if @furima.purchase_user.present?
+      redirect_to root_path
+    end
   end
 
   def update
