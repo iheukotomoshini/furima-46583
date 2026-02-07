@@ -7,8 +7,8 @@ before_action :authenticate_user!, only: [:index, :create]
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @furima = Furima.find(params[:furima_id])
-    if @furima.purchase_user.present?
-      redirect_to root_path 
+    if @furima.purchase_user.present? || current_user.id == @furima.user.id
+      redirect_to root_path
     end
     @purchase_menu = PurchaseMenu.new
     @prefectures = Prefecture.all
