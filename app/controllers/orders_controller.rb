@@ -27,7 +27,6 @@ before_action :authenticate_user!, only: [:index, :create]
     else
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       render :index, status: :unprocessable_entity
-      #redirect_to root_path 
     end
   end
 
