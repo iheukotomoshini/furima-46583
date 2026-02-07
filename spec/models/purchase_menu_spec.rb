@@ -4,8 +4,7 @@ RSpec.describe PurchaseMenu, type: :model do
   before do
     user = FactoryBot.create(:user)
     furima = FactoryBot.create(:furima)
-    purchase_user = FactoryBot.create(:purchase_user, user: user, furima: furima)
-    @purchase_menu = FactoryBot.build(:purchase_menu, user_id: purchase_user.user_id, furima_id: purchase_user.furima_id)
+    @purchase_menu = FactoryBot.build(:purchase_menu, user_id: user.id, furima_id: furima.id)
   end
   describe '購入情報の保存' do
 
