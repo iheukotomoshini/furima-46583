@@ -138,21 +138,21 @@
               <span>Sold Out!!</span>
             </div>
           </div>
+        <% end %>
 
 
-      <div class='item-info'>
-        <h3 class='item-name'>
-          <%= furima.title %>
-        </h3>
-        <div class='item-price'>
-          <span><%= furima.price %>円<br><%= furima.fee.name %></span>
-          <div class='star-btn'>
-            <%= image_tag "star.png", class:"star-icon" %>
-            <span class='star-count'>0</span>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= furima.title %>
+          </h3>
+          <div class='item-price'>
+            <span><%= furima.price %>円<br><%= furima.fee.name %></span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
           </div>
         </div>
-      </div>
-        <% end %>
       <% end %>
     </li>
     <% end %>
