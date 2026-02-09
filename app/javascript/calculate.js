@@ -4,7 +4,8 @@ const price = () => {
   priceInput.addEventListener("input", () => {
     const inputValue = parseFloat(priceInput.value);
     const tax = inputValue * 0.10;
-    const profit = inputValue - round(tax);
+    const taxb = Math.round(tax);
+    const profit = inputValue - taxb;
     document.getElementById('add-tax-price').textContent = Math.round(tax);
     document.getElementById('profit').textContent = Math.round(profit);
   });
