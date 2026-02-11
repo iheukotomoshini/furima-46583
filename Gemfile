@@ -84,4 +84,4 @@ gem 'image_processing', '~> 1.2'
 gem 'payjp'
 gem "gon"
 gem 'pry-rails'
-gem "ruby-vips"
+gem 'ruby-vips', '~> 2.1', '>= 2.1.4'
