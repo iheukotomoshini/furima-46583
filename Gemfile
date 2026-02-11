@@ -84,4 +84,5 @@ gem 'image_processing', '~> 1.2'
 gem 'payjp'
 gem "gon"
 gem 'pry-rails'
-gem 'ruby-vips', '~> 2.1', '>= 2.1.4'
+gem 'ruby-vips'
+gem "aws-sdk-s3", require: false
