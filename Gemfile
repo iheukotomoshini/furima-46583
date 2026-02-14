@@ -75,7 +75,7 @@ group :development do
 end
 
 group :production do
-  gem "pg"
+  #gem "pg"
   gem "unicorn", "6.1.0"
 end
 
@@ -87,3 +87,4 @@ gem "gon"
 gem 'pry-rails'
 gem 'ruby-vips'
 gem "aws-sdk-s3", require: false
+#gem "tzinfo-data"
