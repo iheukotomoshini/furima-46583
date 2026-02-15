@@ -85,6 +85,7 @@ gem 'image_processing', '~> 1.2'
 gem 'payjp'
 gem "gon"
 gem 'pry-rails'
-gem 'ruby-vips'
+#gem 'ruby-vips'
 gem "aws-sdk-s3", require: false
+gem 'mini_magick'
 #gem "tzinfo-data"
