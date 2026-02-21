@@ -87,3 +87,4 @@ gem "gon"
 gem 'pry-rails'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
+gem "nokogiri", force_ruby_platform: true
